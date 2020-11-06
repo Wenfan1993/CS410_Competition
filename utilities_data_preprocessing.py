@@ -200,7 +200,7 @@ def get_test_loader(test_x, test_y):
 
 def combine_train_features(training_response, training_context, pad_length):
     total_train = [a+b for a, b in zip(training_response, training_context)]
-    train_pad =  pad_features(total_train, 200)
+    train_pad =  pad_features(total_train, pad_length)
     return train_pad
 
 def get_features_pad(file_path,label_orig,vocab_to_int, pad_length):
