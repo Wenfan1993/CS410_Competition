@@ -114,9 +114,11 @@ def load_response_context_label(file_path, label_orig, vocab_to_int):
     total_response = []
     total_context = []
     for json_str in json_list:
-        result = json.loads(json_str)
-        
-        total_label.append(label_orig.index(result['label']))
+        result = json.loads(json_str)    
+        try:
+            total_label.append(label_orig.index(result['label']))
+        except KeyError:
+            total_label.append([])
         
         total_response.append(get_int_from_word(preprocess(result['response'], []), vocab_to_int))
         
